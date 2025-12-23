@@ -1,0 +1,13 @@
+{
+  "contactData": {
+    "firstName": "{{fake.person.firstName}}",
+    "lastName": "{{fake.person.lastName}}",
+    "company": "{{fake.company.name}}",
+    "phoneNumber": "{{fake.phone.number}}",
+    "email": "{{fake.person.firstName}}.{{fake.person.lastName}}@{{alpha:6}}.auto"
+  },
+  "loginData": {
+    "email": "sivasai.arava@gmail.com",
+    "password": "QAZqaz852@"
+  }
+}
