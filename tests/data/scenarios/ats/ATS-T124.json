@@ -1,0 +1,85 @@
+{
+  "firstName": "Brian",
+  "lastName": "Farley",
+  "email": "brian.farley@example.com",
+  "salary": "85000",
+  "expYears": "7",
+  "source": "Indeed",
+  "resumePath": "tests/assets/resumes/brian-farley.pdf",
+  "phone": {
+    "type": "Work",
+    "number": "732-732-7322",
+    "extension": "123"
+  },
+  "address": {
+    "type": "Home",
+    "street": "1 Main St",
+    "city": "Holmdel",
+    "zip": "07747",
+    "country": "United States",
+    "state": "New Jersey",
+    "county": "Monmouth"
+  },
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "Tech Solutions Inc.",
+      "startDate": "2018-01-15",
+      "endDate": "Present",
+      "description": "Lead development team for enterprise applications"
+    },
+    {
+      "title": "Software Engineer",
+      "company": "Innovative Systems",
+      "startDate": "2015-06-01",
+      "endDate": "2017-12-31",
+      "description": "Developed web applications using modern frameworks"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Science",
+      "field": "Computer Science",
+      "institution": "Princeton University",
+      "year": "2015"
+    },
+    {
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "institution": "Rutgers University",
+      "year": "2013"
+    }
+  ],
+  "skills": [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Python",
+    "SQL",
+    "AWS"
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Solutions Architect",
+      "issuer": "Amazon Web Services",
+      "date": "2020-05-15"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Spanish",
+      "proficiency": "Professional"
+    }
+  ],
+  "socialProfiles": {
+    "linkedIn": "https://www.linkedin.com/in/brianfarley",
+    "github": "https://github.com/brianfarley"
+  },
+  "notes": "Strong problem-solving skills and excellent communication abilities. Has led multiple successful projects.",
+  "tags": ["Senior Developer", "Full Stack", "AWS Expert"]
+}

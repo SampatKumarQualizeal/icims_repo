@@ -1,0 +1,58 @@
+{
+  "iFormId": "DateOnly_T29635_{{alnum:6}}",
+  "isPublic": true,
+  "isEasy": true,
+  "formType": "person",
+  "testPersonName": "Abby White",
+  "fields": [
+    {
+      "name": "pastDate",
+      "type": "Date Only Field",
+      "validation": "Allow Only Past Date"
+    },
+    {
+      "name": "futureDate",
+      "type": "Date Only Field",
+      "validation": "Allow Only Future Date"
+    }
+  ],
+  "validationScenarios": [
+    {
+      "description": "Test valid past date in pastDate field (should succeed)",
+      "expectError": false,
+      "fields": [
+        {
+          "name": "pastDate",
+          "date": {
+            "month": "Dec",
+            "day": "10",
+            "year": "2025"
+          }
+        }
+      ]
+    },
+    {
+      "description": "Test valid future date in futureDate field (should succeed)",
+      "expectError": false,
+      "fields": [
+        {
+          "name": "pastDate",
+          "date": {
+            "month": "Nov",
+            "day": "19",
+            "year": "2025"
+          }
+        },
+        {
+          "name": "futureDate",
+          "date": {
+            "month": "Sep",
+            "day": "12",
+            "year": "2026"
+          }
+        }
+      ]
+    }
+  ],
+  "cleanup": true
+}

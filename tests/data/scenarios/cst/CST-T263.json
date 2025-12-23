@@ -1,0 +1,72 @@
+{
+  "multibrand": {
+    "name": "mablmultibrand1",
+    "domain": "mabl.staging.jibeapply.com"
+  },
+  "multibrandAPI": {
+    "url": "https://mabl.staging.jibeapply.com/api/cms/context/mablmultibrand1",
+    "expectedConfig": {
+      "name": "mablmultibrand1",
+      "overrideCMSHost": true,
+      "title": "mablmultibrand1",
+      "description": "mablmultibrand1"
+    }
+  },
+  "cmsSite": {
+    "host": "mabl-mablmultibrand1.staging.cms.talentplatform.us",
+    "expectedTitle": "Home"
+  },
+  "multibrandHome": {
+    "expectedTitle": "mablmultibrand1"
+  },
+  "jobsPage": {
+    "expectedTitle": "mablmultibrand1",
+    "initialResultsCount": 18
+  },
+  "keywordSearch": {
+    "keyword": "Software Engineer",
+    "expectedResultsCount": 4,
+    "expectedJobTitle": "Software Engineer"
+  },
+  "locationSearch": {
+    "location": "New York",
+    "expectedResultsCount": 2,
+    "expectedDistance": 10,
+    "expectedDistanceUnit": "MILES"
+  },
+  "categoryFilter": {
+    "categoryName": "Engineering",
+    "expectedResultsCount": 4
+  },
+  "sortTest": {
+    "sortOption": "Posted",
+    "expectedURLParams": {
+      "sortBy": "posted_date",
+      "descending": "true"
+    }
+  },
+  "notes": {
+    "setup": "This test uses the multibrand 'mablmultibrand1' on the staging environment",
+    "multibrandURLPatterns": [
+      "API Context: https://{domain}/api/cms/context/{multibrand}",
+      "CMS Site: https://{customer}-{multibrand}.staging.cms.talentplatform.us/en-US/",
+      "Main Domain Home: https://{domain}/{multibrand}/",
+      "Jobs Page: https://{domain}/{multibrand}/jobs"
+    ],
+    "testDomain": "mabl.staging.jibeapply.com",
+    "testMultibrand": "mablmultibrand1",
+    "expectedFeatures": [
+      "Multibrand API returns JSON configuration with name, overrideCMSHost, metadata, title, description",
+      "CMS career site renders with header (banner, nav1, nav2), body (heading), footer (copyright)",
+      "Main domain multibrand home renders with language selector, header, body, footer",
+      "Jobs page supports keyword search with URL parameter 'keywords'",
+      "Jobs page supports location search with URL parameters 'location', 'stretch', 'stretchUnit'",
+      "Jobs page supports category filters with URL parameter 'categories'",
+      "Jobs page supports sort with URL parameters 'sortBy' and 'descending'",
+      "Jobs page supports items per page with URL parameter 'limit'",
+      "Jobs page supports pagination with URL parameter 'page'",
+      "All filter/search actions update URL parameters correctly",
+      "Remove buttons clear filters and restore original results"
+    ]
+  }
+}

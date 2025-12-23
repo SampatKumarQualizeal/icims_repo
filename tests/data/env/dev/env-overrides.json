@@ -1,0 +1,7 @@
+{
+  "login": {
+    "username": "recruiter_dev",
+    "password": "devPassword123"
+  },
+  "resumePath": "tests/assets/resumes/qa/brian-farley-qa.docx"
+}

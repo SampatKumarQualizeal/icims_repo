@@ -1,0 +1,10 @@
+{
+  "ui": {
+    "waitTimeout": 5000
+  },
+  "candidateDefaults": {
+    "salary": "1000",
+    "expYears": "1",
+    "source": "Company website"
+  }
+}

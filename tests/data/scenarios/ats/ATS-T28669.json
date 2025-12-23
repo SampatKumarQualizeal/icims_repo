@@ -1,0 +1,25 @@
+{
+  "candidateCount": 2,
+  "submitFilterOption": "Open jobs (I am recruiter)",
+  "jobFilters": [
+    {
+      "name": "Recruiter",
+      "treeItems": ["Recruiter"],
+      "value": "iAdmin"
+    },
+    {
+      "name": "Job Folder",
+      "treeItems": ["Job Folder"],
+      "dropdownValue": "Approved"
+    }
+  ],
+  "searchTemplateTitle": "Jobs Owned by Recruiter",
+  "searchTemplateDescription": "Jobs owned by this recruiter in Approved Status",
+  "shareGroup": "Recruitment User Group",
+  "dashboardName": "Recruiter Job Dashboard",
+  "dashboardType": "Factoid",
+  "dashboardPosition": "Left",
+  "dashboardShare": "Everyone",
+  "factoidName": "Jobs owned by Recruiter in approved status",
+  "factoidShare": "Everyone"
+}

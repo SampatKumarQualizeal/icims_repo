@@ -1,0 +1,59 @@
+import { test } from '@tests/governance';
+import { ATSLoginFlow } from '@src/flows/ats/common/ats.login.flow';
+import config from '@config/config';
+import { LoginPage } from '@src/pages/ats/login.page';
+import { log } from 'console';
+import { JobFlow } from '@src/flows/ats/job/job.flow';
+import { QuickSearchPage } from '@src/pages/common/quick-search.page';
+
+
+test.describe('Demo of features', () => {
+
+  test('ATS-T000 - Components, Logging, Auto-waiting, Reporting', async ({ baseTest }) => {
+    (test.info() as any).metadata = {
+      product: 'ATS',
+      owner: 'ATS QA',
+      risk: 'Medium'
+    };
+
+    const page = baseTest.page;
+    const creds = config.secrets.ats.roleCredentials.recruiter;
+
+    const loginPage = new LoginPage(page);
+    await loginPage.section("Login to ATS", async ()=>{
+        await loginPage.goto(config.appBaseUrl);
+        await loginPage.username.fill(creds.username);
+        await loginPage.continueBtn.click();
+        await loginPage.password.fill(creds.password);
+        await loginPage.submit.click();
+    });
+
+  });
+});
+
+test.describe('Demo of features', () => {
+
+  test('ATS-T000 Session caching and Multi role', async ({
+      baseTest,
+      logger,
+      testData,
+      authPage,
+      tabs
+    }) => {
+      const page = authPage; 
+      
+      // const page = baseTest.page;
+      // const loginFlow = new ATSLoginFlow(page, baseTest.logger);
+      // const creds = config.secrets.ats.roleCredentials.admin;
+      // await loginFlow.login({username: creds.username, password: creds.password}, 'ATS Recruiter User');
+      
+      const quickSearch = new QuickSearchPage(page);
+      const jobId = testData.jobId; //'1137';
+      
+      logger.info(`Open job ${jobId} profile`);
+      
+      // 1. Search job
+      await quickSearch.openJobProfile(jobId);
+
+  });
+});

@@ -1,0 +1,11 @@
+{
+  "candidateData": {
+    "firstName": "Alex",
+    "lastName": "Johnson",
+    "email": "{{fake.person.firstName}}.{{fake.person.lastName}}@{{alpha:6}}.auto",
+    "mobilePhone": "{{fake.phone.number}}",
+    "homePhone": "{{fake.phone.number}}",
+    "workPhone": "{{fake.phone.number}}",
+    "referralSource": "Auto Referral - #{{alnum:6}}"
+  }
+}

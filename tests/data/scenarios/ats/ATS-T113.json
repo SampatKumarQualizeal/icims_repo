@@ -1,0 +1,18 @@
+{
+  "firstName": "AutoBrian",
+  "email":"",
+  "phone": {
+    "type": "Work",
+    "number": "7327327322",
+    "extension": "123"
+  },
+  "address": {
+    "type": "Home",
+    "street": "1 Main St",
+    "city": "Holmdel",
+    "zip": "07747",
+    "country": "United States",
+    "state": "New Jersey",
+    "county": "Monmouth"
+  }
+}

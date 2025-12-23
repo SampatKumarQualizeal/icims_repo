@@ -1,0 +1,8 @@
+{
+  "testCaseId": "ATS-T29743",
+  "personName": "Abby White",
+  "password": "NewPassword123!",
+  "retypePassword": "",
+  "expectedAlertMessage": "There was a validation error",
+  "expectedInlineMessage": "Please ensure that both password fields match"
+}

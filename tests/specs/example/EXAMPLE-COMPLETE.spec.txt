@@ -1,0 +1,99 @@
+// tests/specs/example/EXAMPLE-COMPLETE.spec.ts
+import { test } from '@tests/governance';
+import { expect } from '@playwright/test';
+
+// Real pages and flows from your repo
+import { NavigatorMenuPage } from '@src/pages/common/navigation/nav-menu.page';
+import { CreateMenuPage } from '@src/pages/common/navigation/create-menu.page';
+import { PersonMenuPage } from '@src/pages/common/navigation/person-menu.page';
+
+import { CandidateWizardFlow } from '@src/flows/ats/candidate/candidate-wizard.flow';
+import { VerifyCandidateProfileFlow } from '@src/flows/ats/candidate/verify-candidate-profile.flow';
+
+/**
+ * EXAMPLE-COMPLETE
+ * Demonstrates how to use governance fixtures, baseTest, flows, pages, metadata,
+ * multi-role switching, evidence collection, and assertions using actual repo code.
+ *
+ * Uses flows & POMs present under:
+ *  - src/flows/ats/candidate/candidate-wizard.flow.ts
+ *  - src/flows/ats/candidate/verify-candidate-profile.flow.ts
+ *  - src/pages/common/navigation/*
+ *  - src/pages/ats/candidate/*
+ *
+ * Repo maps referencing these locations were provided: :contentReference[oaicite:3]{index=3} :contentReference[oaicite:4]{index=4} :contentReference[oaicite:5]{index=5}
+ */
+
+test.skip('EXAMPLE-T001 - Full Framework Example (uses real POMs & flows)', async ({ baseTest }) => {
+  // --- 1) Optional: attach test-level metadata (governance will add testId automatically) ---
+  (test.info() as any).metadata = {
+    product: 'ATS',
+    owner: 'Automation Engineering',
+    type: 'E2E',
+    risk: 'Medium',
+    tags: ['example', 'framework', 'full']
+  };
+
+  // --- 2) Access execution context provided by governance ---
+  const { page, logger, tabs, testId } = baseTest;
+  const td = baseTest.testData; // merged defaults + env + scenario from src/config/data-loader.util.ts
+
+  const completeCandidateWizard = new CandidateWizardFlow(baseTest, page);
+  const verifyCandidateDetails = new VerifyCandidateProfileFlow(baseTest, page);
+
+  await logger.section(`Start example spec - ${testId}`, async () => {
+    logger.info('Loaded testData keys', { keys: Object.keys(td || {}) });
+  });
+
+  // --- 3) Run governance pre-checks if available (fixture may expose a callable) ---
+  await (baseTest as any).runPreChecks();
+
+  // --- 4) Use navigation POMs to reach Create -> Person -> Candidate wizard ---
+  const nav = new NavigatorMenuPage(page);
+  const create = new CreateMenuPage(page);
+  const person = new PersonMenuPage(page);
+
+  await logger.section('Open Create > Person > Candidate wizard', async () => {
+    // open global navigator (page-level control)
+    await nav.openNavigator();
+    await nav.openCreate();
+    await create.openPerson();
+    await person.selectCandidate();
+  });
+
+  // --- 5) Execute the real candidate creation flow
+  // Flow file: src/flows/ats/candidate/candidate-wizard.flow.ts (exists in repo) :contentReference[oaicite:6]{index=6}
+  // The flow in your repo imports Page and page objects; call it with page + testData
+  await completeCandidateWizard.completeCandidateWizard(td);
+  logger.info('completeCandidateWizard completed');
+
+
+  // --- 6) Verify profile using the real verification flow
+  // Flow file: src/flows/ats/candidate/verify-candidate-profile.flow.ts (exists in repo) :contentReference[oaicite:7]{index=7}
+  let verification: any = {};
+  await logger.section('Capture & assert created profile', async () => {
+    verification = await verifyCandidateDetails.verifyCandidateDetails(td);
+
+    });
+
+    // --- 8) Multi-role example: open an admin session and verify presence of record (example only) ---
+    await logger.section('Multi-role: admin quick verification', async () => {
+      const { base: admin, dispose } = await baseTest.as('admin');
+      try {
+        await admin.page.goto('/admin/logs');
+        await admin.assertThat(admin.page.getByText(testId).isVisible()).isTrue();
+      } finally {
+        await dispose();
+      }
+    });
+
+    // --- 9) Tabs usage example (open new tab for audit) ---
+    await logger.section('Open audit tab via TabManager', async () => {
+      await tabs.waitForPopup('Audit Tab', { timeout: 3000 });
+    });
+
+    // --- 11) Final log & cleanup ---
+    await logger.section('Finish', async () => {
+      logger.info('Example spec finished', { testId });
+    });
+  });

@@ -1,0 +1,23 @@
+{
+   "scripts": {
+      "test:staging": "cross-env ENVIRONMENT=staging playwright test",
+      "test:qa": "cross-env ENVIRONMENT=qa playwright test",
+      "test:dev": "cross-env ENVIRONMENT=dev playwright test"
+   },
+   "devDependencies": {
+      "@faker-js/faker": "^10.1.0",
+      "@launchdarkly/node-server-sdk": "^9.10.2",
+      "@playwright/test": "^1.56.1",
+      "@types/node": "^24.10.1",
+      "@types/pdfkit": "^0.17.4",
+      "pdfkit": "^0.17.2"
+   },
+   "dependencies": {
+      "cross-env": "^10.1.0",
+      "dotenv": "^17.2.3",
+      "fs": "^0.0.1-security",
+      "node-fetch": "^3.3.2",
+      "path": "^0.12.7",
+      "typescript": "^5.9.3"
+   }
+}

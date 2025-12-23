@@ -1,0 +1,22 @@
+{
+  "testCaseId": "ATS-T29917",
+  "portalUrl": "https://careers-test719.icims.com",
+  "platformUrl": "https://test719.icims.com",
+  "jobTitle": "Test Job 1",
+  "email": "t29917.test@icims.com",
+  "login": "t29917test",
+  "password": "Test123!@#",
+  "firstName": "T29917",
+  "lastName": "TestCandidate",
+  "phone": "1234567890",
+  "address": "123 Test St",
+  "city": "New York",
+  "zip": "10001",
+  "state": "New York",
+  "source": "Company Website",
+  "gender": "Male",
+  "race": "White (Not Hispanic or Latino)",
+  "sourceChannel": "External",
+  "sourceDevice": "Desktop",
+  "sourcePortal": "Careers (External)"
+}

@@ -1,0 +1,113 @@
+{
+  "notes": "Conservative / legacy customer environment. Minimal flags. Classic UI. Limited HA and workflow customization.",
+
+  "flags": {
+    "portal-ui-v2": false,
+    "new-job-posting-ui": false,
+    "text-engagement-v2": false,
+    "hiring-automation-phase2": false,
+    "candidate-workflow-v3": false,
+    "job-template-v2": false
+  },
+
+  "propKeys": {
+    "job.enableInternalPosting": false,
+    "job.enforcePostingApproval": true,
+    "portal.newProfileFlow": false,
+    "workflow.autoLaunchRules": false,
+    "candidate.enablePhoneNumberValidation": true,
+    "iform.builderV2": false,
+    "ats.enableBulkEmailV2": false,
+    "ats.enablePortalBrandingV2": false,
+    "integration.workato.useTransactionalQueue": false
+  },
+
+  "dbConfig": {
+    "endpoints": [
+      {
+        "path": "/workflow/bins",
+        "method": "POST",
+        "body": {
+          "bins": [
+            { "name": "New Applicant", "order": 1 },
+            { "name": "Phone Screen", "order": 2 },
+            { "name": "Interview", "order": 3 },
+            { "name": "Offer", "order": 4 }
+          ]
+        }
+      },
+      {
+        "path": "/profile/fields",
+        "method": "POST",
+        "body": {
+          "fields": [
+            { "name": "Source", "type": "dropdown", "options": ["LinkedIn", "Indeed", "Referral"] },
+            { "name": "Requisition Code", "type": "text", "required": false }
+          ]
+        }
+      },
+      {
+        "path": "/templates/iform",
+        "method": "POST",
+        "body": {
+          "iforms": [
+            {
+              "name": "Legacy Offer Form",
+              "fields": ["candidateName", "positionTitle", "compensation"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "haRules": [
+    {
+      "name": "Legacy Auto-Reject Rule",
+      "trigger": "application_submitted",
+      "condition": "candidate.source == 'Indeed'",
+      "action": "move_to_bin:New Applicant"
+    }
+  ],
+
+  "cms": [
+    {
+      "site": "public-careers",
+      "theme": "classic",
+      "primaryColor": "#1f2937",
+      "secondaryColor": "#374151",
+      "heroText": "Welcome to Our Careers Page",
+      "sections": ["jobs-list"]
+    }
+  ],
+
+  "users": [
+    {
+      "username": "admin_legacy",
+      "password": "Legacy123!",
+      "role": "Admin",
+      "attrs": {
+        "department": "HR",
+        "permissions": ["manage_config", "manage_templates"]
+      }
+    },
+    {
+      "username": "basic_recruiter",
+      "password": "Legacy123!",
+      "role": "Recruiter",
+      "attrs": {
+        "department": "Recruiting",
+        "permissions": ["create_job", "manage_candidates"]
+      }
+    },
+    {
+      "username": "hiring_lead",
+      "password": "Legacy123!",
+      "role": "HiringManager",
+      "attrs": {
+        "department": "Operations",
+        "permissions": ["review_candidates"]
+      }
+    }
+  ]
+}

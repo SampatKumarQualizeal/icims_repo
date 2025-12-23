@@ -1,0 +1,132 @@
+{
+  "notes": "Starter preset for ATS customer environment replication. Modify values as needed.",
+
+  "flags": {
+    "portal-ui-v2": true,
+    "new-job-posting-ui": false,
+    "text-engagement-v2": true,
+    "hiring-automation-phase2": true,
+    "candidate-workflow-v3": false,
+    "job-template-v2": true
+  },
+
+  "propKeys": {
+    "job.enableInternalPosting": true,
+    "job.enforcePostingApproval": false,
+    "portal.newProfileFlow": true,
+    "workflow.autoLaunchRules": true,
+    "candidate.enablePhoneNumberValidation": true,
+    "candidate.newPortalOnboarding": false,
+    "iform.builderV2": true,
+    "ats.enableBulkEmailV2": true,
+    "ats.enablePortalBrandingV2": false,
+    "integration.workato.useTransactionalQueue": true
+  },
+
+  "dbConfig": {
+    "endpoints": [
+      {
+        "path": "/workflow/bins",
+        "method": "POST",
+        "body": {
+          "bins": [
+            { "name": "Phone Screen", "order": 1 },
+            { "name": "Hiring Manager Review", "order": 2 },
+            { "name": "Interview", "order": 3 },
+            { "name": "Offer", "order": 4 },
+            { "name": "Hired", "order": 5 }
+          ]
+        }
+      },
+      {
+        "path": "/profile/fields",
+        "method": "POST",
+        "body": {
+          "fields": [
+            { "name": "Years of Experience", "type": "number", "required": false },
+            { "name": "LinkedIn", "type": "url", "required": false },
+            { "name": "Security Clearance", "type": "dropdown", "options": ["None", "Secret", "Top Secret"] }
+          ]
+        }
+      },
+      {
+        "path": "/templates/iform",
+        "method": "POST",
+        "body": {
+          "iforms": [
+            {
+              "name": "Offer Letter V1",
+              "fields": ["candidateName", "positionName", "salary", "startDate"]
+            }
+          ]
+        }
+      },
+      {
+        "path": "/email/templates",
+        "method": "POST",
+        "body": {
+          "templates": [
+            { "key": "WelcomeEmail", "subject": "Welcome to the Company!", "body": "Hi {{name}}, welcome!" },
+            { "key": "InterviewScheduled", "subject": "Interview Scheduled", "body": "Your interview is scheduled for {{date}}" }
+          ]
+        }
+      }
+    ]
+  },
+
+  "haRules": [
+    {
+      "name": "Auto-Advance Phone Screening",
+      "trigger": "application_submitted",
+      "condition": "candidate.experience >= 5",
+      "action": "move_to_bin:Hiring Manager Review"
+    },
+    {
+      "name": "Notify Recruiter for High Severity Candidates",
+      "trigger": "application_submitted",
+      "condition": "candidate.securityClearance == 'Top Secret'",
+      "action": "send_email:recruiter"
+    }
+  ],
+
+  "cms": [
+    {
+      "site": "public-careers",
+      "theme": "modern",
+      "primaryColor": "#3a6df0",
+      "secondaryColor": "#0f172a",
+      "heroText": "Join Our Team",
+      "sections": ["jobs-list", "testimonials", "benefits"]
+    }
+  ],
+
+  "users": [
+    {
+      "username": "admin_user",
+      "password": "Pass123!",
+      "role": "Admin",
+      "attrs": {
+        "department": "HR",
+        "permissions": ["manage_config", "manage_templates", "manage_flags"]
+      }
+    },
+    {
+      "username": "recruiter_user",
+      "password": "Pass123!",
+      "role": "Recruiter",
+      "attrs": {
+        "department": "Talent Acquisition",
+        "permissions": ["create_job", "manage_candidates"]
+      }
+    },
+    {
+      "username": "hiring_manager",
+      "password": "Pass123!",
+      "role": "HiringManager",
+      "attrs": {
+        "department": "Engineering",
+        "permissions": ["review_candidates", "move_in_workflow"]
+      }
+    }
+  ]
+}

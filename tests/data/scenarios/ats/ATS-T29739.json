@@ -1,0 +1,10 @@
+{
+  "testCaseId": "ATS-T29739",
+  "testName": "Verify validation error when original field has value but re-enter field is empty",
+  "description": "When user enters value in Password field and leaves Password (Retype) field empty, system should throw validation error",
+  "personName": "Abby White",
+  "password": "TestPass123!",
+  "retypePassword": "",
+  "expectedAlertMessage": "There was a validation error",
+  "expectedInlineMessage": "Reason: Please ensure that both password fields match."
+}

@@ -1,0 +1,46 @@
+{
+  "fieldGroupName": "Test Field Group T30112",
+  "fields": [
+    {
+      "label": "HTML Editor T30112_1",
+      "type": "HTML Editor"
+    },
+    {
+      "label": "Profile Link Company T30112_2",
+      "type": "Profile Link (Company)"
+    },
+    {
+      "label": "Profile Link Person T30112_3",
+      "type": "Profile Link (Person)",
+      "template": "Person Profile Link Field",
+      "note": "CRITICAL: Must select search template to avoid validation error"
+    },
+    {
+      "label": "Profile Link Job T30112_4",
+      "type": "Profile Link (Job)"
+    },
+    {
+      "label": "Salary T30112_5",
+      "type": "Salary"
+    },
+    {
+      "label": "Text Email T30112_6",
+      "type": "Text Field (Email)"
+    },
+    {
+      "label": "Text URL T30112_7",
+      "type": "Text Field (URL)"
+    },
+    {
+      "label": "Text Area T30112_8",
+      "type": "Text Area"
+    },
+    {
+      "label": "Text Field T30112_9",
+      "type": "Text Field"
+    }
+  ],
+  "testReadOnly": true,
+  "testHidden": true,
+  "cleanup": true
+}

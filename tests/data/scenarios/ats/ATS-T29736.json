@@ -1,0 +1,41 @@
+{
+  "testCaseId": "ATS-T29736",
+  "testName": "Text re-enter field validation for profile creation",
+  "description": "Verify that text re-enter field should throw validation errors if the values in actual field and confirm field are not equal when creating a profile",
+  "basicInfo": {
+    "firstName": "TestFirst",
+    "lastName": "TestLast",
+    "email": "test@example.com"
+  },
+  "document": {
+    "resumePath": "tests/assets/resumes/brian-farley.docx"
+  },
+  "loginInfo": {
+    "mismatchPassword": "MismatchPass1!",
+    "mismatchReenterPassword": "MismatchPass2!",
+    "validPassword": "ValidPass123!",
+    "validReenterPassword": "ValidPass123!"
+  },
+  "expectedResults": {
+    "passwordMismatchError": "Please ensure that both password fields match.",
+    "profileCreatedIndicator": "Create Person or Profile"
+  },
+  "notes": {
+    "precondition": "Include re-enter for validation should be enabled on password field",
+    "testScenario": "Create profile (Platform) : Text re-enter field should throw validation errors if the values in actual field and confirm field are not equal",
+    "wizardSteps": [
+      "Step 1: Basic Information - Fill First Name, Last Name, Email (required fields)",
+      "Step 2: Documents - Upload resume via file chooser",
+      "Step 3: Login Information - Enter Password and Re-enter Password fields with validation"
+    ],
+    "validationBehavior": [
+      "When passwords do not match: Display error 'Please ensure that both password fields match.'",
+      "When passwords match: Profile creation succeeds and user is redirected to profile view"
+    ],
+    "additionalNotes": [
+      "Test validates re-enter field functionality for any text field with validation enabled",
+      "Password field is used as example, but pattern applies to any field with re-enter validation",
+      "Manual test steps mention checking other tabs (Leave of Absence, Goals, Competencies) but this is optional verification"
+    ]
+  }
+}

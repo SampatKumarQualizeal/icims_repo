@@ -1,0 +1,19 @@
+{
+  "pipelineName": "Automated Pipeline - #{{alnum:10}}",
+  "resumeFilePath": "tests/assets/resumes/crm_resume_upload.pdf",
+  "documentName": "crm_resume_upload.pdf",
+  "expectedData": {
+    "firstName": "Auto",
+    "lastName": "Candidate",
+    "email": "auto.candidate@example.com",
+    "mobilePhone": "555-123-4567",
+    "homePhone": "555-987-6543",
+    "workPhone": "555-456-7890",
+    "referralSource": ""
+  },
+  "notes": {
+    "resumeFile": "Place a valid parseable resume PDF at: tests/assets/resumes/crm_resume_upload.pdf",
+    "parsingWait": "Test waits 15 seconds for backend to parse the resume",
+    "expectedDataNote": "Update expectedData values to match the actual content of your test resume PDF"
+  }
+}

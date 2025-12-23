@@ -1,0 +1,48 @@
+{
+  "iFormId": "ATS_T127_iForm_{{alpha:4}}",
+  "isPublic": true,
+  "isEasy": true,
+  "formType": "person",
+  "viewsContent": "textfield: {{textfield}}\nnumber: {{number}}\ndecimal: {{decimal}}\ntextbox: {{textbox}}\ndatetime: {{datetime}}\ndateonly: {{dateonly}}\ndropdown: {{dropdown}}\nmultiselect: {{multiselect}}\nradiogroup: {{radiogroup}}\nsingleselect: {{singleselect}}\npersonprofilelink: {{personprofilelink}}\njobprofilelink: {{jobprofilelink}}\nlocationprofilelink: {{locationprofilelink}}\nsalaryfield: {{salaryfield}}\ncurrencyfield: {{currencyfield}}\ncheckbox: {{checkbox}}\nssn: {{ssn}}\nradio: {{radio}}",
+  "grouploopName": "testgrouploop",
+  "dependentGroupName": "testdependentgroup",
+  "fieldTypes": [
+    { "index": 1, "type": "Number Field" },
+    { "index": 2, "type": "Decimal Field" },
+    { "index": 3, "type": "Text Box" },
+    { "index": 4, "type": "Date Time Field" },
+    { "index": 5, "type": "Date Only Field" },
+    { "index": 6, "type": "Drop Down" },
+    { "index": 7, "type": "Multi Select Drop Down" },
+    { "index": 8, "type": "Radio Group" },
+    { "index": 10, "type": "Profile Link (Person)" },
+    { "index": 15, "type": "Checkbox" }
+  ],
+  "fieldSettings": [
+    {
+      "name": "personprofilelink",
+      "dataField": "Prepopulate with Profile Link Field"
+    },
+    {
+      "name": "textfield",
+      "required": true,
+      "searchable": true,
+      "section": "Basic Info"
+    },
+    {
+      "name": "number",
+      "section": "Numbers"
+    },
+    {
+      "name": "decimal",
+      "section": "Numbers"
+    }
+  ],
+  "profileFieldPath": "Cand. Details Tab > Recruiter",
+  "dependencyName": "TestDependency",
+  "dependencyQuestion": "dropdown",
+  "dependencyOperator": "Equal to",
+  "dependencyAction": "Show",
+  "dependencyTarget": "testdependentgroup",
+  "duplicateContent": "\nduplicate: {{textfield}}"
+}

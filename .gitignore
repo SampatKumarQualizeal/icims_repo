@@ -1,0 +1,73 @@
+# 
+/config/secrets/secrets.local.ts
+.env
+.env.*
+
+# Deprecated test data locations (data moved to tests/data/scenarios/)
+src/data-factory/test-data/
+
+manual_tests/
+manual tests/
+# Node modules
+node_modules/
+
+# Playwright test result output and logs
+test-results/
+playwright-report/
+screenshots/
+videos/
+trace/
+
+# Coverage reports
+coverage/
+
+# TypeScript output
+dist/
+build/
+out/
+lib/
+
+# Local environment files
+.env*
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE and Editor files
+
+# VSCode
+.vscode/
+.history/
+*.code-workspace
+
+# JetBrains (WebStorm, IntelliJ)
+.idea/
+*.iml
+
+# Mac system files
+.DS_Store
+
+# Operating system files
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+
+# Test data output or downloads (if local)
+downloads/
+
+# Python or other language caches (just in case)
+__pycache__/
+
+# GitHub Actions artifacts and caches, if any
+.github/workflows/.cache/
+
+# Miscellaneous
+*.bak
+*.swp

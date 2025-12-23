@@ -1,0 +1,82 @@
+{
+  "iFormId": "DateValidationTest_T29634",
+  "isPublic": true,
+  "isEasy": true,
+  "formType": "person",
+  "testPersonName": "Abby White",
+  "fields": [
+    {
+      "name": "pastDate",
+      "type": "Date Only Field",
+      "validation": "Allow Only Past Date"
+    },
+    {
+      "name": "futureDate",
+      "type": "Date Only Field",
+      "validation": "Allow Only Future Date"
+    }
+  ],
+  "validationScenarios": [
+    {
+      "description": "Test past date field with future date (should fail)",
+      "expectError": true,
+      "expectedErrorText": "PastDate Error code: Please enter a past date only.",
+      "fields": [
+        {
+          "name": "pastDate",
+          "date": {
+            "month": "December",
+            "day": "12",
+            "year": "2025"
+          }
+        }
+      ]
+    },
+    {
+      "description": "Test future date field with past date (should fail)",
+      "expectError": true,
+      "expectedErrorText": "FutureDate Error code: Please enter a future date only.",
+      "fields": [
+        {
+          "name": "pastDate",
+          "date": {
+            "month": "December",
+            "day": "12",
+            "year": "2024"
+          }
+        },
+        {
+          "name": "futureDate",
+          "date": {
+            "month": "December",
+            "day": "1",
+            "year": "2024"
+          }
+        }
+      ]
+    },
+    {
+      "description": "Test both fields with valid dates (should succeed)",
+      "expectError": false,
+      "fields": [
+        {
+          "name": "pastDate",
+          "date": {
+            "month": "December",
+            "day": "12",
+            "year": "2024"
+          }
+        },
+        {
+          "name": "futureDate",
+          "date": {
+            "month": "December",
+            "day": "12",
+            "year": "2026"
+          }
+        }
+      ]
+    }
+  ],
+  "cleanup": true
+}

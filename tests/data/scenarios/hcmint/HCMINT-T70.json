@@ -1,0 +1,26 @@
+{
+  "newEmployee": {
+    "firstName": "HCMINT70",
+    "lastName": "NewEmployee",
+    "email": "hcmint70.new@icims.com",
+    "employeeId": "UKG-12345",
+    "department": "Engineering",
+    "position": "Software Engineer",
+    "hireDate": "2025-01-15",
+    "status": "Active"
+  },
+  "updatedEmployee": {
+    "firstName": "HCMINT70",
+    "lastName": "UpdatedEmployee",
+    "email": "hcmint70.updated@icims.com",
+    "employeeId": "UKG-12346",
+    "department": "Sales",
+    "position": "Senior Sales Manager",
+    "status": "Active"
+  },
+  "eeoData": {
+    "gender": "Male",
+    "race": "White",
+    "disability": "No"
+  }
+}

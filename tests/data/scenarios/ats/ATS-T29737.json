@@ -1,0 +1,17 @@
+{
+  "testCaseId": "ATS-T29737",
+  "scenarioName": "Profile Edit - Text Field Re-enter Validation",
+  "testName": "Edit profile (Platform): text field should throw validation errors if the values in actual field and confirm field are not equal",
+  "objective": "When 'Include Re-enter for validation' is set on this field, user enters different values in actual field and the confirm field while editing the profile, user should be able to see the validation error",
+  "precondition": "Checkbox 'Include re-enter for validation' should be checked for the field",
+  "searchCriteria": {
+    "email": "testuser@example.com",
+    "name": "Test User"
+  },
+  "field": {
+    "label": "Custom Text Field",
+    "originalValue": "OriginalValue123",
+    "mismatchValue": "DifferentValue456",
+    "validValue": "MatchingValue789"
+  }
+}

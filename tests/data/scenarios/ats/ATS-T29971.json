@@ -1,0 +1,11 @@
+{
+  "candidateName": "Albano Rosa",
+  "statusGroup": "External Portal",
+  "submitFilter": "All open jobs",
+  "emailSubject": "Test Email - Workflow Actions",
+  "emailBody": "This is a test email sent from the recruiting workflow toolbar.",
+  "shareTo": "iAdmin",
+  "shareSubject": "Candidate Profile - Albano Rosa",
+  "shareBody": "Sharing candidate profile for review.",
+  "printDocument": "Resume"
+}

@@ -1,0 +1,60 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: ['main', 'develop']
+  pull_request:
+    branches: ['main', 'develop']
+
+concurrency:
+  group: playwright-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Playwright (Shard ${{ matrix.shard }}/4 · ${{ matrix.env }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3] # 4 shards = 4 parallel runners
+        env: ['staging']   # add other envs: ['dev', 'qa', 'staging', 'preprod']
+
+    env:
+      ENVIRONMENT: ${{ matrix.env }}
+      BASE_URL: ${{ secrets.BASE_URL_STAGING }}
+      UI_USERNAME: ${{ secrets.ats.ui_USERNAME }}
+      UI_PASSWORD: ${{ secrets.ats.ui_PASSWORD }}
+      API_USERNAME: ${{ secrets.API_USERNAME }}
+      API_PASSWORD: ${{ secrets.API_PASSWORD }}
+      MAILHOG_URL: ${{ secrets.MAILHOG_URL }}
+      TWILIO_URL: ${{ secrets.TWILIO_URL }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Tests (Shard ${{ matrix.shard }})
+        run: |
+          npx playwright test --shard=${{ matrix.shard }}/4 --reporter=line
+
+      - name: Upload Artifacts (Traces, Videos, Screenshots, Logs)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shard-${{ matrix.shard }}-${{ matrix.env }}
+          path: |
+            test-results/
+            playwright-report/

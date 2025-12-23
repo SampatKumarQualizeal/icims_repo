@@ -1,0 +1,46 @@
+{
+  "filters": [
+    {
+      "name": "Folder",
+      "options": ["Applicants"]
+    },
+    {
+      "name": "Has Resume",
+      "options": ["Yes"]
+    },
+    {
+      "name": "Country",
+      "options": ["United States"]
+    }
+  ],
+  "columns": [
+    "Full Name",
+    "Address",
+    "Folder",
+    "System ID",
+    "Has Resume",
+    "Updated Date"
+  ],
+  "groupBy": [
+    "Country",
+    "State"
+  ],
+  "sortBy": [
+    {
+      "column": "Updated Date",
+      "direction": "descending"
+    },
+    {
+      "column": "Full Name",
+      "direction": "ascending"
+    },
+    {
+      "column": "Folder",
+      "direction": "ascending"
+    }
+  ],
+  "searchTemplateTitle": "ATS-T179 Search Template",
+  "searchTemplateDescription": "Test search template for ATS-T179",
+  "outputTemplateTitle": "ATS-T179 Output Template",
+  "updatedSearchTemplateTitle": "ATS-T179 Search Template Updated"
+}

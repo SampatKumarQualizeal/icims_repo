@@ -1,0 +1,7 @@
+{
+  "login": {
+    "username": "recruiter_stage",
+    "password": "stagePassword123"
+  },
+  "resumePath": "tests/assets/resumes/Brian Farley.docx"
+}

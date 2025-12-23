@@ -1,0 +1,20 @@
+John Doe
+Senior Software Engineer
+
+Email: john.doe@example.com
+Mobile: +1-555-123-4567
+Work: +1-555-987-6543
+Home: +1-555-456-7890
+
+EXPERIENCE:
+Software Engineer at Tech Corp (2020-Present)
+- Developed web applications
+
+EDUCATION:
+Bachelor of Science in Computer Science
+Tech University (2016-2020)
+
+SKILLS:
+JavaScript, Python, React, Node.js
+
+REFERRAL SOURCE: LinkedIn

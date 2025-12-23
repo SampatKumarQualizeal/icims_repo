@@ -1,0 +1,11 @@
+{
+  "automationName": "HA CW test #14 12/13/25",
+  "triggerCategory": "Workflow Status Changed",
+  "bin": "New Submissions",
+  "status": "Recruiter Reviewed- Move forward",
+  "automationType": "Send Text",
+  "textBody": "Hello {First Name} {Last Name}, thank you for your application for the {Job Title} position at {Company Name}. Your application has been reviewed by our recruiting team and we are moving forward with your candidacy. We will contact you soon with next steps.",
+  "phoneNumber": "5551234567",
+  "waitMinutes": 3,
+  "expectedTextContent": "thank you for your application"
+}
